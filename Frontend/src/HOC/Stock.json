@@ -1,0 +1,13 @@
+[{
+    "Id":"1",
+    "Product":"Oil",
+    "Available":"5",
+    "Category":"Kitchen"
+},
+{
+    "Id":"2",
+    "Product":"Juice",
+    "Available":"5",
+    "Category":"Kitchen"
+}
+]
