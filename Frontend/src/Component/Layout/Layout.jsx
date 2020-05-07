@@ -1,7 +1,7 @@
 import React from 'react';
 import HOC from '../../HOC/HOC'
 import '../../App.css'
-import Dashboard from '../../Container/Dashboard/Dashboard';
+import Project from '../../Container/Project/Project';
 import Meetings from '../../Container/Meetings/Meetings';
 import Stock from '../../Container/Stock/Stock';
 import { connect } from 'react-redux';
@@ -34,7 +34,7 @@ class layout extends React.Component {
                                     <span className="icon-bar"></span>
                                 </button>
                                 <a className="navbar-brand" href="http://cijulenlinea.ucr.ac.cr/dev-users/">
-                                    <h3 className="">My Home</h3>
+                                    <h3 className="">Project Allocation</h3>
                                 </a>
                             </div>
 
@@ -54,7 +54,7 @@ class layout extends React.Component {
                             <div className="collapse navbar-collapse navbar-ex1-collapse">
                                 <ul className="nav navbar-nav side-nav">
                                     <li>
-                                        <a href="/Dashboard" data-toggle="collapse" data-target="#submenu-1"><i className="fa fa-fw fa-search"></i> Dashboard<i className="fa fa-fw fa-angle-down pull-right"></i></a>
+                                        <a href="/Project" data-toggle="collapse" data-target="#submenu-1"><i className="fa fa-fw fa-search"></i> Project<i className="fa fa-fw fa-angle-down pull-right"></i></a>
                                         <ul id="submenu-1" className="collapse">
                                             <li><a href="/#"><i className="fa fa-angle-double-right"></i> SUBMENU 1.1</a></li>
                                             <li><a href="/#"><i className="fa fa-angle-double-right"></i> SUBMENU 1.2</a></li>
@@ -87,8 +87,8 @@ class layout extends React.Component {
                             <div className="container-fluid">
 
                                 <div className="row" id="main" >
-                                    <Route exact path='/' component={Dashboard} />
-                                    <Route path='/Dashboard' component={Dashboard} />
+                                    <Route exact path='/' component={Project} />
+                                    <Route path='/Project' component={Project} />
                                     <Route path='/Meetings' component={Meetings} />
                                     <Route path='/Stock' component={Stock} />
 

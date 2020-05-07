@@ -7,6 +7,12 @@ const MongoClient = require('mongodb').MongoClient;
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 var db;
 MongoClient.connect('mongodb+srv://vaibhav:Passwordmlabs@cluster0-mq4hx.mongodb.net/test?retryWrites=true&w=majority', { useUnifiedTopology: true }, (err, client) => {
   if (err) return console.error("Error:" + err)
@@ -60,4 +66,27 @@ app.put('/profile', (req, res) => {
 
 app.listen(5000, function () {
   console.log('Example app listening on port 5000!');
+});
+
+app.get('/project', function (req, res) {
+
+  db.collection('Project').find().toArray()
+    .then(results => {
+      console.log(results);
+      res.json(results);
+
+    })
+    .catch(error => console.error("Error" + error))
+});
+
+// Post api from profile.
+app.post('/project', function (req, res) {
+  console.log(req.body);
+  db.collection('Project').insertOne(req.body)
+    .then(result => {
+      console.log(result)
+    })
+    .catch(error => console.error(error))
+
+  res.send("Done");
 });
