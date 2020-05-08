@@ -25,7 +25,7 @@ MongoClient.connect('mongodb+srv://vaibhav:Passwordmlabs@cluster0-mq4hx.mongodb.
 app.get('/Profile', function (req, res) {
   db.collection('Profile').find().toArray()
     .then(results => {
-      console.log(results);
+     // console.log(results);
       res.json(results);
 
     })
@@ -43,6 +43,7 @@ app.post('/Profile', function (req, res) {
 
   res.send("Done");
 });
+
 
 // Update the profile api.
 app.put('/profile', (req, res) => {

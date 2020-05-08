@@ -15,24 +15,59 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(FetchProfileData());
     },
 
-    AddProjectData:(NewItem)=>{
-      dispatch(AddProfileData(NewItem))
+    AddProfileData:(profileData)=>{
+      dispatch(AddProfileData(profileData))
     }
     
   };
 };
 
-
-
-
 class Profile extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      profile: [],
+      newProfile: []
+    }
+
+    this.SaveProfile = this.SaveProfile.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  SaveProfile(e) {
+      let techs = e.target.techStack.value.split(' ');
+      this.state.newProfile.push({
+        name: e.target.employee_Name.value,
+        band: e.target.band.value,
+        techstack: techs
+      });
+      this.setState({
+        profile: [this.state.profile, ...this.state.newProfile]
+      })
+      console.log(this.state.profile);
+      this.props.AddProfileData(...this.state.newProfile);
+      this.setState({
+        newProfile: []
+      })
+      console.log(this.state.profile);
+      e.target.employee_Name.value = "";
+      e.target.band.value = "";
+      e.target.techStack.value = "";
+  
+      e.preventDefault();
+    }
+
+  handleChange(e) {
+  }
+
+  
   render() {
     return(
       <React.Fragment>
         <div className="container">
           <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Item</button>
           <input type="text" className="txt" onChange={this.InputHandler} style={{ margin: "3em", padding: '2px' }} placeholder="Search"></input>
-          <form onSubmit={this.AddItem}>
+          <form onSubmit={this.SaveProfile}>
             <div className="modal fade" id="myModal" role="dialog">
               <div className="modal-dialog">
                 <div className="modal-content">
@@ -41,18 +76,18 @@ class Profile extends React.Component {
                     <h4>Add item to list</h4>
                   </div>
                   <div className="modal-body">
-                    <div>
-                      <input type="text" placeholder="id" id="id"></input>
+                  <div className="form-group">
+                      <label>Employee Name</label>
+                      <input type="text" className="form-control" placeholder="Employee Name" id="employee_Name" onChange={this.handleChange}></input>
                     </div>
-                    <div>
-                      <input type="text" placeholder="Product Name" id="Project Name"></input>
-                    </div>
-                    <div>
-                      <input type="text" placeholder="Quantity" id="quantity"></input>
+                    <div className="form-group">
+                      <label>Employee Band</label>
+                      <input type="text" className="form-control" placeholder="Band" id="band" onChange={this.handleChange}></input>
 
                     </div>
-                    <div>
-                      <input type="text" placeholder="Category" id="category"></input>
+                    <div className="form-group">
+                      <label>TechStack</label>
+                      <input type="text" className="form-control" placeholder="TechStack" id="techStack" onChange={this.handleChange}></input>
                     </div>
                   </div>
                   <div className="modal-footer">
@@ -68,15 +103,14 @@ class Profile extends React.Component {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Name</th>
+              <th scope="col">Employee Name</th>
               <th scope="col">Band</th>
               <th scope="col">Tech Stack</th>
             </tr>
           </thead>
           <tbody>
 
-            {this.props.profileData//.filter(x => x.Product.includes(this.state.input))
-              .map(function (name, index) {
+            {this.props.profileData.map(function (name, index) {
                 return (<tr>
                   <th scope="row">
                     {index + 1}
@@ -89,7 +123,7 @@ class Profile extends React.Component {
                   </td>
                   <td>
                  
-                  {name.techStack.map(function(tech ,index){
+                  {name.techstack.map(function(tech ,index){
                     return(
                         <a className="btn-sm btn-info techButton">
                           {tech}
