@@ -2,7 +2,7 @@ import React from 'react';
 import HOC from '../../HOC/HOC'
 import '../../App.css'
 import Project from '../../Container/Project/Project';
-import Meetings from '../../Container/Meetings/Meetings';
+import Profile from '../../Container/Profile/Profile';
 import Stock from '../../Container/Stock/Stock';
 import { connect } from 'react-redux';
 
@@ -62,7 +62,7 @@ class layout extends React.Component {
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="/Meetings" data-toggle="collapse" data-target="#submenu-2"><i className="fa fa-fw fa-star"></i>  Meeting <i className="fa fa-fw fa-angle-down pull-right"></i></a>
+                                        <a href="/Profile" data-toggle="collapse" data-target="#submenu-2"><i className="fa fa-fw fa-star"></i>  Profiles <i className="fa fa-fw fa-angle-down pull-right"></i></a>
                                         <ul id="submenu-2" className="collapse">
                                             <li><a href="/#"><i className="fa fa-angle-double-right"></i> SUBMENU 2.1</a></li>
                                             <li><a href="/#"><i className="fa fa-angle-double-right"></i> SUBMENU 2.2</a></li>
@@ -89,7 +89,7 @@ class layout extends React.Component {
                                 <div className="row" id="main" >
                                     <Route exact path='/' component={Project} />
                                     <Route path='/Project' component={Project} />
-                                    <Route path='/Meetings' component={Meetings} />
+                                    <Route path='/Profile' component={Profile} />
                                     <Route path='/Stock' component={Stock} />
 
                                 </div>

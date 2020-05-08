@@ -23,7 +23,6 @@ MongoClient.connect('mongodb+srv://vaibhav:Passwordmlabs@cluster0-mq4hx.mongodb.
 
 // Get API for Profile
 app.get('/Profile', function (req, res) {
-
   db.collection('Profile').find().toArray()
     .then(results => {
       console.log(results);
@@ -69,7 +68,7 @@ app.listen(5000, function () {
 });
 
 app.get('/project', function (req, res) {
-
+  console.log(req.body);
   db.collection('Project').find().toArray()
     .then(results => {
       console.log(results);
