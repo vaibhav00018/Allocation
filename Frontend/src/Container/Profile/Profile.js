@@ -5,7 +5,8 @@ import {FetchProfileData, AddProfileData} from './ProfileAction'
 
 const mapStateToProps = (state) => {
   return {
-    profileData : state.ProfileReducer.profileData
+    profileData : state.ProfileReducer.profileData,
+    isAuthenticate : state.ProfileReducer.isAuthenticate
   };
 }
 
@@ -64,6 +65,7 @@ class Profile extends React.Component {
   render() {
     return(
       <React.Fragment>
+       {this.props.isAuthenticate ? "": this.props.history.push('/login')}
         <div className="container">
           <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Item</button>
           <input type="text" className="txt" onChange={this.InputHandler} style={{ margin: "3em", padding: '2px' }} placeholder="Search"></input>
@@ -110,6 +112,7 @@ class Profile extends React.Component {
           </thead>
           <tbody>
 
+          
             {this.props.profileData.map(function (name, index) {
                 return (<tr>
                   <th scope="row">

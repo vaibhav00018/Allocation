@@ -31,13 +31,11 @@ export const FetchProjectData = () => {
 export const AddProjectData = (item) => {
 
     return dispatch => {
-
-        Axios.post("http://localhost:5000/project",item).then((data)=> {
+        Axios.post("http://localhost:5000/project", item).then((data) => {
             console.log(data);
             dispatch(addItemToStore(item))
         }).catch(err => {
-                console.log(err);
-            });
-        
+            console.log(err);
+        });
     };
 }

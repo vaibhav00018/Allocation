@@ -4,6 +4,8 @@ import '../../App.css'
 import Project from '../../Container/Project/Project';
 import Profile from '../../Container/Profile/Profile';
 import Stock from '../../Container/Stock/Stock';
+import Login from '../../Container/Login/login';
+
 import { connect } from 'react-redux';
 
 
@@ -33,7 +35,7 @@ class layout extends React.Component {
                                     <span className="icon-bar"></span>
                                     <span className="icon-bar"></span>
                                 </button>
-                                <a className="navbar-brand" href="http://cijulenlinea.ucr.ac.cr/dev-users/">
+                                <a className="navbar-brand" href="">
                                     <h3 className="">Project Allocation</h3>
                                 </a>
                             </div>
@@ -91,6 +93,8 @@ class layout extends React.Component {
                                     <Route path='/Project' component={Project} />
                                     <Route path='/Profile' component={Profile} />
                                     <Route path='/Stock' component={Stock} />
+                                    <Route path='/Login' component={Login} />
+
 
                                 </div>
                             </div>
