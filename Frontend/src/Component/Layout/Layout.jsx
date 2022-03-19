@@ -7,8 +7,6 @@ import Stock from '../../Container/Stock/Stock';
 import Login from '../../Container/Login/login';
 
 import { connect } from 'react-redux';
-
-
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
