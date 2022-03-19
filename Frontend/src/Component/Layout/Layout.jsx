@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
     return {
         count: state.StockReducer.count,
     }
+    
 }
 class layout extends React.Component {
    
